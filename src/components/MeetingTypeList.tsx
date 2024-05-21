@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import MeetingModal from "./MeetingModal";
 import { useUser } from "@clerk/nextjs";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
-import { Description } from "@radix-ui/react-dialog";
 import { useToast } from "./ui/use-toast";
 import { Textarea } from "./ui/textarea";
 import ReactDatePicker from "react-datepicker";
@@ -180,8 +179,11 @@ const MeetingTypeList = () => {
         title="Type the link here"
         className="text-center"
         buttonText="Join Meeting"
-        handleClick={() => {
-          router.push(values.link);
+        handleClick={async () => {
+          if (!values.link) return;
+          const newLink = values.link.split("meeting/")[1];
+          if (!newLink) return;
+          router.push(`meeting/${newLink}`);
         }}
       >
         <Input
