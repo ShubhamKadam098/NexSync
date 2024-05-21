@@ -14,7 +14,7 @@ const Footer = () => {
           <Image
             width="40"
             height="40"
-            src={"/icons/github-icon.svg"}
+            src={"/icons/github-Icon.svg"}
             alt="github"
           />
           @ShubhamKadam098
