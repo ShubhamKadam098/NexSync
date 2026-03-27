@@ -5,9 +5,12 @@ import MeetingSetup from "@/components/MeetingSetup";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
-import React, { useState } from "react";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 
-const MeetingPage = ({ params: { id } }: { params: { id: string } }) => {
+const MeetingPage = () => {
+  const params = useParams();
+  const id = params.id as string;
   const { user, isLoaded } = useUser();
   const [isSetupComplete, setIsSetupComplete] = useState(false);
   const { call, isCallLoading } = useGetCallById(id);
