@@ -31,6 +31,7 @@ const Sidebar = () => {
                 alt={item.label}
                 width={24}
                 height={24}
+                style={{ width: 'auto', height: 'auto' }}
               />
               <p className="text-lg font-semibold max-lg:hidden">
                 {item.label}

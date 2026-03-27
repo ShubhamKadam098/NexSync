@@ -27,6 +27,7 @@ const MobileNav = () => {
             height={36}
             alt="hamburger icon"
             className="cursor-pointer sm:hidden"
+            style={{ width: 'auto', height: 'auto' }}
           />
         </SheetTrigger>
         <SheetContent side="left" className="border-none bg-dark-1">
@@ -37,6 +38,7 @@ const MobileNav = () => {
               height={32}
               alt="logo"
               className="max-sm:size-10"
+              style={{ width: 'auto', height: 'auto' }}
             />
             <p className="text-[26px] font-extrabold text-white ">NexSync</p>
           </Link>
@@ -62,6 +64,7 @@ const MobileNav = () => {
                           alt={link.label}
                           width={20}
                           height={20}
+                          style={{ width: 'auto', height: 'auto' }}
                         />
                         <p className="font-semibold">{link.label}</p>
                       </Link>
