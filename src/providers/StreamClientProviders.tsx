@@ -17,15 +17,19 @@ const StreamVideoProvider = ({ children }: { children: React.ReactNode }) => {
     const client = new StreamVideoClient({
       apiKey,
       user: {
-        id: user?.id,
-        name: user?.id || user?.id,
-        image: user?.imageUrl,
+        id: user.id,
+        name: user.username || user.id,
+        image: user.imageUrl,
       },
       tokenProvider,
     });
     setvideoClient(client);
   }, [user, isLoaded]);
-  if (!videoClient) return <Loader />;
+
+  if (!isLoaded) return <Loader />;
+
+  if (!videoClient) return <>{children}</>;
+
   return <StreamVideo client={videoClient}>{children}</StreamVideo>;
 };
 export default StreamVideoProvider;

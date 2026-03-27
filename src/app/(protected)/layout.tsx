@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   },
 };
 
-const rootLayout = ({ children }: { children: ReactNode }) => {
+const ProtectedLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <main>
-      <StreamVideoProvider>{children}</StreamVideoProvider>
-    </main>
+    <StreamVideoProvider>
+      <main>{children}</main>
+    </StreamVideoProvider>
   );
 };
 
-export default rootLayout;
+export default ProtectedLayout;
