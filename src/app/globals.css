@@ -1,97 +1,167 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@custom-variant dark (&:is(.dark *));
 
-/* ======== stream css overrides ======== */
-.cl-providerIcon__github {
-  filter: invert(1);
-}
-
-.str-video__call-stats {
-  max-width: 500px;
-  position: relative;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
 }
 
-.str-video__speaker-layout__wrapper {
-  max-height: 700px;
+@theme {
+  --color-dark-1: #1c1f2e;
+  --color-dark-2: #161925;
+  --color-dark-3: #252a41;
+  --color-dark-4: #1e2757;
+
+  --color-blue-1: #0e78f9;
+
+  --color-sky-1: #c9ddff;
+  --color-sky-2: #ecf0ff;
+  --color-sky-3: #f5fcff;
+
+  --color-orange-1: #ff742e;
+
+  --color-purple-1: #830ef9;
+
+  --color-yellow-1: #f9a90e;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  --background-image-hero: url('/images/hero-background.png');
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-.str-video__participant-details {
-  color: white;
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
 }
 
-.str-video__menu-container {
-  color: white;
+@utility flex-center {
+  @apply flex justify-center items-center;
 }
 
-.str-video__notification {
-  color: white;
+@utility flex-between {
+  @apply flex justify-between items-center;
 }
-
-.str-video__participant-list {
-  background-color: #1c1f2e;
-  padding: 10px;
-  border-radius: 10px;
-  color: white;
-  height: 100%;
-}
-
-.str-video__call-controls__button {
-  height: 40px;
-}
-
-.glassmorphism {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.glassmorphism2 {
-  background: rgba(18, 17, 17, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* ==== clerk class override ===== */
-
-.cl-userButtonPopoverActionButtonIcon {
-  color: white;
-}
-
-.cl-logoBox {
-  height: 40px;
-}
-.cl-dividerLine {
-  background: #252a41;
-  height: 2px;
-}
-
-.cl-socialButtonsIconButton {
-  border: 3px solid #565761;
-}
-
-.cl-internal-wkkub3 {
-  color: white;
-}
-.cl-userButtonPopoverActionButton {
-  color: white;
-}
-
-/* =============================== */
 
 @layer utilities {
-  .flex-center {
-    @apply flex justify-center items-center;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  .flex-between {
-    @apply flex justify-between items-center;
+  /* ======== stream css overrides ======== */
+  .cl-providerIcon__github {
+    filter: invert(1);
   }
+
+  .str-video__call-stats {
+    max-width: 500px;
+    position: relative;
+  }
+
+  .str-video__speaker-layout__wrapper {
+    max-height: 700px;
+  }
+
+  .str-video__participant-details {
+    color: white;
+  }
+
+  .str-video__menu-container {
+    color: white;
+  }
+
+  .str-video__notification {
+    color: white;
+  }
+
+  .str-video__participant-list {
+    background-color: #1c1f2e;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    height: 100%;
+  }
+
+  .str-video__call-controls__button {
+    height: 40px;
+  }
+
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .glassmorphism2 {
+    background: rgba(18, 17, 17, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* ==== clerk class override ===== */
+
+  .cl-userButtonPopoverActionButtonIcon {
+    color: white;
+  }
+
+  .cl-logoBox {
+    height: 40px;
+  }
+  .cl-dividerLine {
+    background: #252a41;
+    height: 2px;
+  }
+
+  .cl-socialButtonsIconButton {
+    border: 3px solid #565761;
+  }
+
+  .cl-internal-wkkub3 {
+    color: white;
+  }
+  .cl-userButtonPopoverActionButton {
+    color: white;
+  }
+
+  /* =============================== */
 }
 
 /* animation */
